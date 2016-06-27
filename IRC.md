@@ -66,6 +66,8 @@ A brief list of commands supported by our IRC server include:
 Note:
 - After a successful `JOIN`, you will *not* receive a membership state events (`NAMES`, `JOIN`, `PART`, or `MODE`) *unless* you've requested our [IRCv3 `Membership`](#membership) capability.
 - The channel name should be entered in lowercase.
+- Attempting to join a suspended or deleted channel will result in a `msg_channel_suspended` NOTICE.
+- Attempting to join a non-existent channel will result in the JOIN being quietly dropped.
 
 ```
 < JOIN #channel
@@ -174,6 +176,7 @@ r9k_on | This room is now in r9k mode.
 r9k_off | This room is no longer in r9k mode.
 host_on | Now hosting `target_channel`.
 host_off | Exited host mode.
+msg_channel_suspended | The channel you attempted to JOIN or send a message to is suspended or deactivated.
 
 ### HOSTTARGET
 

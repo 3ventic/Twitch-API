@@ -297,3 +297,20 @@ Changes only contain the relevant tag. Setting slow mode to 10 seconds for examp
 - `r9k` is R9K mode. Messages with more than 9 characters must be unique. `0` means disabled, `1` enabled.
 - `subs-only` is subscribers only mode. Only subscribers and moderators can chat. `0` disabled, `1` enabled.
 - `slow` determines how many seconds chatters without moderator privileges must wait between sending messages.
+
+### USERNOTICE
+
+USERNOTICE is a special notice from a user currently only used for re-subscription messages.
+
+#### Re-subscription notice
+
+```
+@badges=staff/1,broadcaster/1,turbo/1;color=#008000;display-name=TWITCH_UserName;emotes=;mod=0;msg-id=resub;msg-param-months=6;room-id=1337;subscriber=1;system-msg=TWITCH_UserName\shas\ssubscribed\sfor\s6\smonths!;login=twitch_username;turbo=1;user-id=1337;user-type=staff :tmi.twitch.tv USERNOTICE #channel :Great stream -- keep it up!
+@badges=staff/1,broadcaster/1,turbo/1;color=#008000;display-name=TWITCH_UserName;emotes=;mod=0;msg-id=resub;msg-param-months=6;room-id=1337;subscriber=1;system-msg=TWITCH_UserName\shas\ssubscribed\sfor\s6\smonths!;login=twitch_username;turbo=1;user-id=1337;user-type=staff :tmi.twitch.tv USERNOTICE #channel
+```
+
+- `msg-id` is the type of the notice. See above examples for valid types.
+- `msg-param-months` is the number of consecutive months the user has subscribed for in a resub notice.
+- `system-msg` is the message printed in chat along with this notice.
+- `login` is the username of the user, who sent the notice.
+- Other tags are shared with PRIVMSG and function the same way.

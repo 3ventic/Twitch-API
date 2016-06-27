@@ -177,6 +177,12 @@ r9k_off | This room is no longer in r9k mode.
 host_on | Now hosting `target_channel`.
 host_off | Exited host mode.
 msg_channel_suspended | The channel you attempted to JOIN or send a message to is suspended or deactivated.
+timeout_success | The user was successfully timed out.
+ban_success | The user was successfully banned.
+unban_success | The user was successfully unbanned.
+bad_unban_no_ban | The user is not banned, could not unban.
+already_banned | The user is already banned, could not time out or ban again.
+
 
 ### HOSTTARGET
 

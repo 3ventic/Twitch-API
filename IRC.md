@@ -235,10 +235,16 @@ Adds IRC v3 message tags to `PRIVMSG`, `USERSTATE`, `NOTICE` and `GLOBALUSERSTAT
 
 ### PRIVMSG
 
-Example message:
+#### Normal message
 
 ```
 > @badges=global_mod/1,turbo/1;color=#0D4200;display-name=TWITCH_UserNaME;emotes=25:0-4,12-16/1902:6-10;mod=0;room-id=1337;subscriber=0;turbo=1;user-id=1337;user-type=global_mod :twitch_username!twitch_username@twitch_username.tmi.twitch.tv PRIVMSG #channel :Kappa Keepo Kappa
+```
+
+#### Bits message
+
+```
+> @badges=staff/1,bits/1000;bits=100;color=;display-name=TWITCH_UserNaME;emotes=;id=b34ccfc7-4977-403a-8a94-33c6bac34fb8;mod=0;room-id=1337;subscriber=0;turbo=1;user-id=1337;user-type=staff :twitch_username!twitch_username@twitch_username.tmi.twitch.tv PRIVMSG #channel :cheer100
 ```
 
 - `badges` is a comma-separated list of chat badges, valid badges are `staff`, `admin`, `global_mod`, `moderator`, `subscriber` and `turbo`.
@@ -255,6 +261,11 @@ Example message:
 - `user-id` is the user's ID.
 - `user-type` is either *empty*, `mod`, `global_mod`, `admin` or `staff`.
   - The broadcaster can have any of these, including empty.
+- `bits`, if present, means the user sent this amount of bits to the broadcaster. All instances of `/(^|\s)cheers\d+(\s|$)/` should be replaced with the appropriate emote: `static-cdn.jtvnw.net/bits/THEME/TYPE/COLOR/SIZE`, where
+  - `THEME` is `light` or `dark`
+  - `TYPE` is `animated` or `static`
+  - `COLOR` is `red` for >= 10000 bits, `blue` for >= 5000, `green` for >= 1000, `purple` for >= 100, or otherwise `gray`
+  - `SIZE` is a digit between 1 and 4.
 
 ### USERSTATE
 
@@ -305,9 +316,9 @@ USERNOTICE is a special notice from a user currently only used for re-subscripti
 #### Re-subscription notice
 
 ```
-@badges=staff/1,broadcaster/1,turbo/1;color=#008000;display-name=TWITCH_UserName;emotes=;mod=0;msg-id=resub;msg-param-months=6;room-id=1337;subscriber=1;system-msg=TWITCH_UserName\shas\ssubscribed\sfor\s6\smonths!;login=twitch_username;turbo=1;user-id=1337;user-type=staff :tmi.twitch.tv USERNOTICE #channel :Great stream -- keep it up!
+> @badges=staff/1,broadcaster/1,turbo/1;color=#008000;display-name=TWITCH_UserName;emotes=;mod=0;msg-id=resub;msg-param-months=6;room-id=1337;subscriber=1;system-msg=TWITCH_UserName\shas\ssubscribed\sfor\s6\smonths!;login=twitch_username;turbo=1;user-id=1337;user-type=staff :tmi.twitch.tv USERNOTICE #channel :Great stream -- keep it up!
 
-@badges=staff/1,broadcaster/1,turbo/1;color=#008000;display-name=TWITCH_UserName;emotes=;mod=0;msg-id=resub;msg-param-months=6;room-id=1337;subscriber=1;system-msg=TWITCH_UserName\shas\ssubscribed\sfor\s6\smonths!;login=twitch_username;turbo=1;user-id=1337;user-type=staff :tmi.twitch.tv USERNOTICE #channel
+> @badges=staff/1,broadcaster/1,turbo/1;color=#008000;display-name=TWITCH_UserName;emotes=;mod=0;msg-id=resub;msg-param-months=6;room-id=1337;subscriber=1;system-msg=TWITCH_UserName\shas\ssubscribed\sfor\s6\smonths!;login=twitch_username;turbo=1;user-id=1337;user-type=staff :tmi.twitch.tv USERNOTICE #channel
 ```
 
 - `msg-id` is the type of the notice. See above examples for valid types.

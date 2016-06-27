@@ -285,7 +285,7 @@ USERSTATE is sent when joining a channel and every time you send a PRIVMSG to a 
 GLOBALUSERSTATE is sent on successful login, if the capabilities have been acknowledged before then. Example:
 
 ```
-@color=#0D4200;display-name=TWITCH_UserNaME;emote-sets=0,33,50,237,793,2126,3517,4578,5569,9400,10337,12239;turbo=0;user-id=1337;user-type=admin :tmi.twitch.tv GLOBALUSERSTATE
+> @color=#0D4200;display-name=TWITCH_UserNaME;emote-sets=0,33,50,237,793,2126,3517,4578,5569,9400,10337,12239;turbo=0;user-id=1337;user-type=admin :tmi.twitch.tv GLOBALUSERSTATE
 ```
 
 - All tags are shared with PRIVMSG or USERSTATE and function the same way.

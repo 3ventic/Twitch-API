@@ -169,19 +169,30 @@ General notices from the server - could be about state change (slowmode enabled)
  msg-id | reponse
  ---|---
 subs_on | This room is now in subscribers-only mode.
+already_subs_on | This room is already in subscribers-only mode.
 subs_off | This room is no longer in subscribers-only mode.
+already_subs_off | This room is not in subscribers-only mode.
 slow_on | This room is now in slow mode. You may send messages every `slow_duration` seconds.
 slow_off | This room is no longer in slow mode.
 r9k_on | This room is now in r9k mode.
+already_r9k_on | This room is already in r9k mode.
 r9k_off | This room is no longer in r9k mode.
+already_r9k_off | This room is not in r9k mode.
 host_on | Now hosting `target_channel`.
+bad_host_hosting | This channel is already hosting `target_channel`.
 host_off | Exited host mode.
-msg_channel_suspended | The channel you attempted to JOIN or send a message to is suspended or deactivated.
-timeout_success | The user was successfully timed out.
-ban_success | The user was successfully banned.
-unban_success | The user was successfully unbanned.
-bad_unban_no_ban | The user is not banned, could not unban.
-already_banned | The user is already banned, could not time out or ban again.
+hosts_remaining | `number` host commands remaining this half hour.
+emote_only_on | This room is now in emote-only mode.
+already_emote_only_on | This room is already in emote-only mode.
+emote_only_off | This room is no longer in emote-only mode.
+already_emote_only_off | This room is not in emote-only mode.
+msg_channel_suspended | This channel has been suspended.
+timeout_success | `target_user` has been timed out for `ban_duration` seconds.
+ban_success | `target_user` is now banned from this room.
+unban_success | `target_user` is no longer banned from this room.
+bad_unban_no_ban | `target_user` is not banned from this room.
+already_banned | `target_user` is already banned in this room.
+unrecognized_cmd | Unrecognized command: `command`
 
 
 ### HOSTTARGET
@@ -200,7 +211,7 @@ Number is assumed to be the number of viewers watching the host.
 
 ### CLEARCHAT
 
-Username is timed out on channel:
+Username is timed out or banned on a channel. See CLEARCHAT tags [below](#clearchat-1) to differentiate.
 
 ```
 > :tmi.twitch.tv CLEARCHAT #channel :twitch_username

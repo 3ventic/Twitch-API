@@ -156,7 +156,7 @@ Someone gained or lost operator:
 > :tmi.twitch.tv CAP * ACK :twitch.tv/commands
 ```
 
-Enables `USERSTATE`, `GLOBALUSERSTATE`, `ROOMSTATE`, `HOSTTARGET`, `NOTICE` and `CLEARCHAT` raw commands.
+Enables custom raw commands detailed below.
 
 ### NOTICE
 
@@ -225,6 +225,15 @@ Use with tags CAP. See ROOMSTATE tags [below](#roomstate-1).
 ```
 > :tmi.twitch.tv ROOMSTATE #channel
 ```
+
+### USERNOTICE
+
+USERNOTICE is a special notice from a user currently only used for re-subscription messages. See USERNOTICE tags [below](#usernotice-1).
+
+```
+> :tmi.twitch.tv USERNOTICE #channel :message
+```
+
 ## Tags
 
 ```
@@ -311,8 +320,6 @@ Changes only contain the relevant tag. Setting slow mode to 10 seconds for examp
 
 ### USERNOTICE
 
-USERNOTICE is a special notice from a user currently only used for re-subscription messages.
-
 #### Re-subscription notice
 
 ```
@@ -330,3 +337,20 @@ Trailing part of the message will be entirely omitted, if the user did not enter
 - `system-msg` is the message printed in chat along with this notice.
 - `login` is the username of the user, who sent the notice.
 - Other tags are shared with PRIVMSG and function the same way.
+
+### CLEARCHAT
+
+#### User is timed out
+
+```
+@ban-duration=1;ban-reason=Follow\sthe\srules :tmi.twitch.tv CLEARCHAT #channel :target_username
+```
+
+#### User is banned
+
+```
+@ban-reason=Follow\sthe\srules :tmi.twitch.tv CLEARCHAT #channel :target_username
+```
+
+- `ban-duration` is the duration of the timeout in seconds. The tag is omitted on permanent bans.
+- `ban-reason` is the reason the moderator gave for the timeout or ban.
